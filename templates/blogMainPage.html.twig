@@ -1,0 +1,36 @@
+{% block title %} <h1>BLOG HOMEPAGE</h1>{%  endblock %}
+
+{% block body %}
+    {% if blogPosts %}
+        <table id="blogPosts" class ="table table-striped">
+            <thead>
+                <tr>
+                    <th>Posts</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for blogPost in blogPosts %}
+                    <tr>
+                        <td>{{ blogPost.title }}</td>
+                        <td>
+                            <a href="/blogPost/{{ blogPost.id }}">Read</a>
+                            <a href="/editBlogPost/{{ blogPost.id }}">Edit</a>
+                            <a href="/deleteBlogPost/{{ blogPost.id }}">Delete</a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+
+    {% else %}
+        <p>No blog posts created yet! Create one below.</p>
+    {% endif %}
+                     <tr>
+                         <td>
+                            <a href="/newBlogPost">New Blog Post</a>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+
+{% endblock %}
